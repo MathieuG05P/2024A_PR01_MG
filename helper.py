@@ -1,5 +1,4 @@
 special_coins_pos = [(1, 1), (14, 1), (1, 13), (14, 13)]
-center_pos = [(12, 7), (11, 7), (13, 7), (14, 7)]
 
 def create_board():
     # 1 -> Wall
@@ -31,13 +30,9 @@ def create_coins(board):
         for y in range(1, 16):
             if board[y][x] == 0: 
                 coins.append((x, y))
-                
-                for position in special_coins_pos:
-                    if position in coins:
-                        coins.remove(position)
-                for position in center_pos:
-                    if position in coins:
-                        coins.remove(position)    
+    for position in special_coins_pos:
+        if position in coins:
+            coins.remove(position)  
     return coins      
 
 def create_special_coins(board):
