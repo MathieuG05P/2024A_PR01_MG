@@ -68,7 +68,7 @@ class Ghost:
     def change_direction(self):
         directions =  [Direction.LEFT, Direction.RIGHT, Direction.UP, Direction.DOWN]
         random.shuffle(directions)
-        self.pos = (int(self.pos[0] / TILE_WIDTH) * TILE_WIDTH, int(self.pos[1] / TILE_HEIGHT) * TILE_HEIGHT)
+        #self.pos = (int(self.pos[0] / TILE_WIDTH) * TILE_WIDTH, int(self.pos[1] / TILE_HEIGHT) * TILE_HEIGHT) si la vitesse est à 0.35
         for choice in directions:
             next_y = self.pos[1] + choice[1] * self.speed
             next_x = self.pos[0] + choice[0] * self.speed
