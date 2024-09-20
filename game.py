@@ -92,7 +92,7 @@ class Game:
         for i in range(self.pacman.lives):
             self.screen.blit(pacman_image, (150 + i * 40, 50 * 15))
 
-    def handle_keypress(self, event): #Étape 1 de la partie 2 (voir pour le not et check colision)
+    def handle_keypress(self, event):
         
         if event.key == pygame.K_RIGHT:
             if self.check_collision((1, 0)):
@@ -114,16 +114,11 @@ class Game:
 
 
     def check_collision(self, direction):
-        
-        # TODO: Extraire les coordonnées de déplacement de la direction (dx, dy)
         dx, dy = direction
-        # TODO: Calculer la nouvelle position de Pac-Man après le déplacement (new_x, new_y) avec la formule new_x = self.pacman.x + dx
         new_x, new_y = self.pacman.x + dx, self.pacman.y + dy
-        # TODO: Vérifier si la nouvelle position est un chemin valide ou un mur
-        # Utiliser la grille (`self.board`) pour déterminer si la case est un chemin (0) ou un mur (1). return True si c'est un chemin, False si c'est un mur.
         if self.board[new_y][new_x] == 0:
             return True
-        elif self.board[new_y][new_x] == 1:
+        if self.board[new_y][new_x] == 1:
             return False
 
     def update(self):
@@ -144,10 +139,7 @@ class Game:
     def check_score(self):
         
         if (self.pacman.x, self.pacman.y) in self.coins:
-            # TODO: Vérifier si la position actuelle de Pac-Man (en coordonnées de grille) correspond à une position de pièce en utilisant (self.pacman.x, self.pacman.y)
-            # TODO: Si Pac-Man est sur une pièce, la retirer de la liste des pièces restantes à collecter 
             self.coins.remove((self.pacman.x, self.pacman.y))
-            # TODO: Ajouter des points au score du joueur pour la pièce collectée (par exemple, 10 points)
             self.score += 10
         if len(self.coins) == 0:
             self.end.render(True)
@@ -156,13 +148,8 @@ class Game:
 
     def check_special_coins(self):
         if (self.pacman.x, self.pacman.y) in self.special_coins:
-        # TODO: Vérifier si la position actuelle de Pac-Man (en coordonnées de grille) correspond à une position de pièce spéciale
-
-            # TODO: Si Pac-Man est sur une pièce spéciale, retirer cette pièce spéciale de la liste
             self.special_coins.remove((self.pacman.x, self.pacman.y))  
-            # TODO: Ajouter des points au score du joueur pour la pièce spéciale collectée
-            self.score += 1000
-            # TODO: Activer le mode "manger" en appelant la méthode appropriée pour activer le mode "manger" des fantômes avec self.activate_eat_mode()
+            self.score += 100
             self.activate_eat_mode()
 
     def activate_eat_mode(self):
