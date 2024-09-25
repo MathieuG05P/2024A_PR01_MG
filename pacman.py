@@ -47,7 +47,6 @@ class PacMan:
             if self.board[new_y][new_x] == 0:
                 self.x, self.y = new_x, new_y
                 TILE_WIDTH, TILE_HEIGHT = screen_width / COLS, screen_height / ROWS
-                
                 screen_x, screen_y = grid_to_screen((self.x, self.y), (TILE_WIDTH, TILE_HEIGHT))
                 self.rect.topleft = screen_x, screen_y
                 
