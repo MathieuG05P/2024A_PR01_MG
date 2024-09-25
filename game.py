@@ -92,16 +92,13 @@ class Game:
         for i in range(self.pacman.lives):
             self.screen.blit(pacman_image, (150 + i * 40, 50 * 15))
 
-    def handle_keypress(self, event):
-        
+    def handle_keypress(self, event):   
         if event.key == pygame.K_RIGHT:
-            if self.check_collision((1, 0)):
-                
+            if self.check_collision((1, 0)):   
                 self.pacman.set_direction((1, 0))
         
         elif event.key == pygame.K_LEFT:
             if self.check_collision((-1, 0)):
-                
                 self.pacman.set_direction((-1, 0))
                 
         elif event.key == pygame.K_UP:
@@ -118,7 +115,7 @@ class Game:
         new_x, new_y = self.pacman.x + dx, self.pacman.y + dy
         if self.board[new_y][new_x] == 0:
             return True
-        if self.board[new_y][new_x] == 1:
+        elif self.board[new_y][new_x] == 1:
             return False
 
     def update(self):
