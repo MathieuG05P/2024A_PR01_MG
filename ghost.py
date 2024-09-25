@@ -29,20 +29,17 @@ class Ghost:
 
     def move(self):
         # Si le fantôme n'est pas "mort", commencez le calcul de sa prochaine position
-        if not self.dead:
-            
-            
+        if not self.dead: 
             next_x = self.pos[0] + self.direction[0] * self.speed
             next_y = self.pos[1] + self.direction[1] * self.speed
             next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])
             if self.check_collision(next_rect):
                 self.change_direction()
-            if not self.check_collision(next_rect):
+            elif not self.check_collision(next_rect):
                 self.pos = (next_x, next_y)
                 self.rect = next_rect
         elif self.death_timer > 0:
             self.death_timer -= 1
-
             # Une fois le timer expiré, réinitialiser la position du fantôme et son état
             if self.death_timer == 0:
                 # Choisissez une position aléatoire pour réinitialiser le fantôme
@@ -68,7 +65,6 @@ class Ghost:
     def change_direction(self):
         directions =  [Direction.LEFT, Direction.RIGHT, Direction.UP, Direction.DOWN]
         random.shuffle(directions)
-        #self.pos = (int(self.pos[0] / TILE_WIDTH) * TILE_WIDTH, int(self.pos[1] / TILE_HEIGHT) * TILE_HEIGHT) si la vitesse est à 0.35
         for choice in directions:
             next_y = self.pos[1] + choice[1] * self.speed
             next_x = self.pos[0] + choice[0] * self.speed
