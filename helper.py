@@ -26,8 +26,8 @@ def create_board():
 
 def create_coins(board):
     coins =  []
-    for x in range(1 ,16):
-        for y in range(1, 16):
+    for x in range(len(board)):
+        for y in range(len(board)):
             if board[y][x] == 0: 
                 coins.append((x, y))
     for position in special_coins_pos:
