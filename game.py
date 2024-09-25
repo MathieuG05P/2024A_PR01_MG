@@ -134,7 +134,6 @@ class Game:
         self.check_special_coins()
 
     def check_score(self):
-        
         if (self.pacman.x, self.pacman.y) in self.coins:
             self.coins.remove((self.pacman.x, self.pacman.y))
             self.score += 10
